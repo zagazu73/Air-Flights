@@ -51,10 +51,11 @@ set serveroutput off
 
 prompt creando roles y definiendo sus privilegios...
 create role zn_rol_admin;
-grant create session,create table,create view to zn_rol_admin;
+grant create session,create table,create view,create procedure,
+  create trigger to zn_rol_admin;
 prompt rol zn_rol_admin creado!
 create role zn_rol_invitado;
-grant create session,create table to zn_rol_invitado;
+grant create session,create table,create synonym to zn_rol_invitado;
 prompt rol zn_rol_invitado creado!
 
 create user zn_proy_invitado identified by axzu quota unlimited on users;
