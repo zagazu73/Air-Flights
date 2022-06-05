@@ -18,7 +18,7 @@ create table aeropuerto(
       latitud between 0 and 90
     ),
     constraint aeropuerto_longitud_chk check(
-      longitud between 0 and 90
+      longitud between 0 and 180
     ),
     constraint aeropuerto_nombre_chk check(
       length(nombre) > 2 --Nombre del aeropuerto no puede ser tan corto
@@ -121,7 +121,9 @@ create table empleado(
     nombre         varchar2(50)     not null,
     ap_paterno     varchar2(50)     not null,
     ap_materno     varchar2(50)     not null,
-    rfc            varchar2(13)     not null,
+    rfc            generated always as(
+      substr(curp,0,13)
+    ) virtual,
     curp           varchar2(18)     not null,
     foto           blob             not null,
     jefe_id        number(10,0)            ,
@@ -309,6 +311,6 @@ create table ubicacion_vuelo(
       latitud between 0 and 90
     ),
     constraint ubicacion_vuelo_longitud_chk check(
-      longitud between 0 and 90
+      longitud between 0 and 180
     )
 );
