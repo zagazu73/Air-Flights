@@ -8,7 +8,6 @@ connect zn_proy_admin/axzu
 
 -- Mejorar desempeño en consultas
 -- Tabla empleado
---create index emp_rfc_ix on empleado(rfc);
 --create index emp_curp_ix on empleado(curp);
 create index emp_empleados_ix on empleado(nombre, ap_paterno, ap_materno);
 
@@ -32,7 +31,6 @@ create index pas_pasajeros_ix on pasajero(nombre, ap_paterno, ap_materno);
 
 -- Tabla empleado
 --create unique index emp_curp_iuk on empleado(curp);
---create unique index emp_rfc_iuk on empleado(rfc);
 
 -- Tabla vuelo 
 --create unique index vue_num_vuelo_iuk on vuelo(num_vuelo);
