@@ -10,11 +10,11 @@ prompt Creando objetos del modelo relacional...
 @s-02-entidades.sql
 
 prompt Creando sinonimos...
-@s-02-sinonimos.sql
+@s-07-sinonimos.sql
 
---prompt Cargando datos...
---@s-03-carga-inicial.sql
---commit;
+prompt Generando vistas...
+@s-08-vistas.sql
+
 
 --@s-04-respuestas.sql
 --@s-05-validador-main.sql
