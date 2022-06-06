@@ -23,6 +23,7 @@ begin
      
      v_error := 'Error(es):';
     
+          
     select count(*) 
     into v_existe
     from avion
@@ -30,10 +31,10 @@ begin
     
     -- Si el registro ya existe
     if v_existe = 1 then
-      v_error := v_error || (' El avión con id: ' + r.avion_id + ' ya se encuentra registrado.');
+      v_error := v_error || (' El avión con id: ' || r.avion_id || ' ya se encuentra registrado.');
    
-    elsif r.es_carga = 1 or r.es_comercial = 1 then
     
+    elsif r.es_carga = 1 or r.es_comercial = 1 then
       -- Si no existe y es carga   
       if r.es_carga = 1  and (r.bodega_profundidad is not null and r.bodega_alto is not null and r.bodega_ancho is not null and r.num_bodegas is not null
                                                  and r.capacidad is not null and r.aeropuerto_id is not null) then
@@ -45,7 +46,7 @@ begin
       
         -- Si no existe el aeropuerto
         if v_existe = 0 then
-          v_error := v_error || (' El aeropuerto con id: ' + r.aeropuerto_id + ' no existe.');
+          v_error := v_error || (' El aeropuerto con id: ' || r.aeropuerto_id || ' no existe.');
            
         else
         
@@ -55,7 +56,7 @@ begin
         
           -- Si no se tiene convenio con el aeropuerto
           if v_existe = 0 then
-          v_error := v_error || (' El aeropuerto con id: ' + r.aeropuerto_id + ' no tiene convenio.');
+          v_error := v_error || (' El aeropuerto con id: ' || r.aeropuerto_id || ' no tiene convenio.');
           else
             insert into avion(avion_id, matricula, modelo, especificaciones, es_comercial, es_carga)
               values(r.avion_id, r.matricula, r.modelo, r.especificaciones, r.es_comercial, r.es_carga);
@@ -87,7 +88,7 @@ begin
       end if;
     
     else
-      v_error := v_error || (' El avión con id: ' + r.avion_id + ' no tiene un tipo válido.');
+      v_error := v_error || (' El avión con id: ' || r.avion_id || ' no tiene un tipo válido.');
     end if;
     
     select count(*) 
