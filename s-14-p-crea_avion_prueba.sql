@@ -88,15 +88,29 @@ begin
     raise_application_error(-20001,'Error en escenario 2: Se encontró un registro en avión');
   end if;
   
+  delete from avion_comercial where avion_id = v_avion_id_1;
+  delete from avion_comercial where avion_id = v_avion_id_2;
+  
+  delete from avion_carga where avion_id = v_avion_id_1;
+  delete from avion_carga where avion_id = v_avion_id_2;
+  
+  delete from avion where avion_id = v_avion_id_1;
+  delete from avion where avion_id = v_avion_id_2;
+  
+  delete from avion_tmp where avion_id = v_avion_id_1;
+  delete from avion_tmp where avion_id = v_avion_id_2;
+  
+  delete from avion_tmp_falla where avion_id = v_avion_id_1;
+  delete from avion_tmp_falla where avion_id = v_avion_id_2;
+
   exception
     -- Cuando el select no encuentra registros, lanza un error en el escenario 2
     when NO_DATA_FOUND then
       raise_application_error(-20002,'Error en escenario 2: No se encontró el registro en la tabla temporal de fallas');
-      
 end;
 /
 show errors
 
-Prompt Haciendo rollback para limpiar tablas...
-rollback;
+Prompt Eliminando registros de prueba de las tablas...
+
 set serveroutput off
