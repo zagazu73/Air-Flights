@@ -27,7 +27,7 @@ insert into pasajero (pasajero_id, nombre, ap_paterno, ap_materno, curp) values 
 insert into pasajero (pasajero_id, nombre, ap_paterno, ap_materno, curp) values (pasajero_seq.nextval, 'Loreen', 'Mattingley', 'Ziebart', 'MAZL441109SYPGSNP1');
 insert into pasajero (pasajero_id, nombre, ap_paterno, ap_materno, curp) values (pasajero_seq.nextval, 'Vladimir', 'Binder', 'Cahillane', 'BICV321109NKYRKYS8');
 insert into pasajero (pasajero_id, nombre, ap_paterno, ap_materno, curp) values (pasajero_seq.nextval, 'Brook', 'Keller', 'Palfree', 'KEPB791109MRMIRQK5');
-insert into pasajero (pasajero_id, nombre, ap_paterno, ap_materno, curp) values (pasajero_seq.nextval, 'Dianna', 'Zollner', 'Jumeau', 'ZOJD521200HBFHUBG7');
+insert into pasajero (pasajero_id, nombre, ap_paterno, ap_materno, curp) values (pasajero_seq.nextval, 'Dianna', 'Zollner', 'Jumeau', 'ZOJD521203HBFHUBG7');
 insert into pasajero (pasajero_id, nombre, ap_paterno, ap_materno, curp) values (pasajero_seq.nextval, 'Izaak', 'Giovannoni', 'Leivers', 'GILI101109VJDVZVR4');
 insert into pasajero (pasajero_id, nombre, ap_paterno, ap_materno, curp) values (pasajero_seq.nextval, 'Sammie', 'Manueau', 'Dusting', 'MADS601109ALMXYYQ8');
 insert into pasajero (pasajero_id, nombre, ap_paterno, ap_materno, curp) values (pasajero_seq.nextval, 'Catherina', 'Talby', 'Chapelhow', 'TACC521109CVJBHWQ7');

@@ -55,3 +55,12 @@ from empleado join empleado_vuelo using(empleado_id)
 where lower(rol) = 'piloto';
 
 -- Consulta 5 (Consulta de una tabla externa)
+prompt mostrando los datos de puesto_ext
+set linesize window
+col puesto_id   format 99
+col clave       format a20
+col nombre      format a20
+col descripcion format a20
+col sueldo      format 9999999
+
+select * from puesto_ext;

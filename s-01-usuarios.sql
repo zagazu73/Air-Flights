@@ -51,8 +51,8 @@ set serveroutput off
 
 prompt creando roles y definiendo sus privilegios...
 create role zn_rol_admin;
-grant create session,create table,create view,create public synonym,
-  create synonym,create procedure,create trigger, create sequence to zn_rol_admin;
+grant create session,create table,create view,create sequence,create public synonym,
+  create synonym,create procedure,create trigger to zn_rol_admin;
 prompt rol zn_rol_admin creado!
 create role zn_rol_invitado;
 grant create session,create synonym to zn_rol_invitado;
