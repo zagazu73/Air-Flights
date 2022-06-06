@@ -28,6 +28,9 @@ prompt Generando vistas...
 prompt Carga inicial...
 @s-09-carga-inicial.sql
 
+prompt Realizando consultas..
+@s-10-consultas.sql
+
 prompt procedimiento crea avion...
 @s-13-p-crea_avion.sql
 
