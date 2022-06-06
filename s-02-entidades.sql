@@ -82,7 +82,7 @@ create table pasajero(
     ap_materno          varchar2(50)             ,
     curp                varchar2(18)     not null,
     fecha_nacimiento    generated always as(
-      to_date(substr(curp,9,2)||'/'||substr(curp,7,2)||'/'||substr(curp,5,2),'DD/MONTH/AAAA')
+      to_date(substr(curp,9,2)||'/'||substr(curp,7,2)||'/'||substr(curp,5,2),'DD/MM/YY')
     ) virtual,
     constraint pasajero_pk primary key(pasajero_id),
     constraint pasajero_curp_uk unique(curp)
