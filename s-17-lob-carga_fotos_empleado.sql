@@ -65,17 +65,13 @@ begin
     for update;  
     
     -- Cargando la foto en un solo paso
-    -- dbms_lob.loadblobfromfile(v_foto, v_bfile, v_length_archivo, v_src_offset, v_dest_offset);
     dbms_lob.loadblobfromfile(
-      dest_lob    => v_foto, 
-      src_bfile   => v_bfile,
-      amount      => v_length_archivo,
-      src_offset  => v_src_offset,
-      dest_offset => v_dest_offset
-    );
-      
-    dbms_output.put_line('dest_offset = ' || v_dest_offset);  
-    dbms_output.put_line('Tamaño de foto = ' || v_length_archivo);  
+      dest_lob    => v_foto,            -- Destino
+      src_bfile   => v_bfile,           -- Inicio
+      amount      => v_length_archivo,  -- # Bytes a cargar
+      src_offset  => v_src_offset,      -- Desde qué byte se empezará a cargar (1, se cargará por completo)
+      dest_offset => v_dest_offset      -- Desde qué byte se empezará a leer   (1, se cargará por completo)
+    ); 
     
     v_length_blob := dbms_lob.getlength(v_foto);
     
