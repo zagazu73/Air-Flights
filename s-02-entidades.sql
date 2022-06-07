@@ -226,8 +226,9 @@ prompt creando tabla pasajero_vuelo...
 create table pasajero_vuelo(
     pasajero_vuelo_id    number(10,0)     not null,
     num_asiento          number(3,0)      not null,
-    atenciones           varchar2(2000)    not null,
-    tomado               number(1,0)     default 1,
+    tipo_asiento         varchar2(3)      not null,
+    atenciones           varchar2(2000)   not null,
+    tomado               number(1,0)      default 1,
     pasajero_id          number(10,0)     not null,
     vuelo_id             number(10,0)     not null,
     constraint pasajero_vuelo_pasajero_id_fk foreign key(pasajero_id)
@@ -235,25 +236,34 @@ create table pasajero_vuelo(
     constraint pasajero_vuelo_vuelo_id_fk foreign key(vuelo_id)
     references vuelo(vuelo_id),
     constraint pasajero_vuelo_pk primary key(pasajero_vuelo_id),
+    constraint pasajero_vuelo_num_asiento_uk unique(num_asiento),
     constraint pasajero_vuelo_tomado_chk check(
       tomado in (0,1)
+    ),
+    constraint pasajero_vuelo_tipo_asiento_chk check(
+      tipo_asiento in('ORD','DIS','VIP')
     )
 );
 
 prompt creando tabla pase_abordar...
 create table pase_abordar(
-    pase_abordar_id      number(10,0)    not null,
+    pase_abordar_id      number(10,0)     not null,
     folio                varchar2(8)      not null,
     fecha_impresion      date      default sysdate,
     hora_llegada         date             not null,
     hora_salida          date             not null,
-    num_asiento          number(3,0)     not null,
+    num_asiento          number(3,0)      not null,
+    tipo_asiento         varchar2(3)      not null,
     sala_abordar         varchar2(5)              ,
-    pasajero_vuelo_id    number(10,0)    not null,
+    pasajero_vuelo_id    number(10,0)     not null,
     constraint pase_abordar_pasajero_vuelo_id_fk foreign key(pasajero_vuelo_id)
     references pasajero_vuelo(pasajero_vuelo_id),
     constraint pase_abordar_pk primary key(pase_abordar_id),
-    constraint pase_abordar_folio_uk unique(folio)
+    constraint pase_abordar_folio_uk unique(folio),
+    constraint pase_abordar_num_asiento_uk unique(num_asiento),
+    constraint pase_abordar_tipo_asiento_chk check(
+      tipo_asiento in('ORD','DIS','VIP')
+    )
 );
 
 prompt creando tabla maleta...
