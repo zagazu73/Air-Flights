@@ -4,13 +4,6 @@
 
 connect zn_proy_admin/axzu
 
-create sequence avion_tmp_seq
-start with 1
-increment by 1
-maxvalue 1000
-minvalue 1
-cycle;
-
 create sequence avion_seq
 start with 1
 increment by 1
