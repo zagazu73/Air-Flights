@@ -40,7 +40,7 @@ begin
    
     dbms_output.put_line('Mostrando la longitud de los archivos cargados...');
     for r in cur_fotos loop
-      dbms_output.put_line(r.empleado_id || ' ' || r.longitud_foto);
+      dbms_output.put_line('Empleado: ' || r.empleado_id || ', tamaño foto: ' || r.longitud_foto);
     end loop;
     
   exception 
