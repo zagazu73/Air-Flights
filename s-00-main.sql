@@ -38,12 +38,18 @@ prompt Creando triggers...
 @s-11-tr-maletas.sql
 @s-11-tr-link-empleado.sql
 @s-11-tr-historico.sql
+@s-11-tr-pase-abordar.sql
 
 prompt procedimiento crea avion...
 @s-13-p-crea_avion.sql
+@s-14-p-crea_avion_prueba.sql
+
+prompt Creando funciones...
+@s-15-fx-bono-desempenio.sql
+@s-15-fx-desempenio-aeropuerto.sql
+@s-15-fx-tiempo-espera.sql
 
 prompt Carga inicial...
-@s-14-p-crea_avion_prueba.sql
 
 --@s-04-respuestas.sql
 --@s-05-validador-main.sql

@@ -60,6 +60,13 @@ maxvalue 100000
 minvalue 1
 nocycle;
 
+create sequence pase_abordar_folio_seq
+start with 1
+increment by 1
+maxvalue 100000
+minvalue 1
+nocycle;
+
 create sequence status_vuelo_seq
 start with 1
 increment by 1
