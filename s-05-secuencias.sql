@@ -11,13 +11,6 @@ maxvalue 1000
 minvalue 1
 nocycle;
 
-create sequence puesto_seq
-start with 1
-increment by 1
-maxvalue 100
-minvalue 1
-nocycle;
-
 create sequence empleado_seq
 start with 1
 increment by 1
