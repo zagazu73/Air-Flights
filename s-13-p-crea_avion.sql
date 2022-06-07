@@ -4,7 +4,9 @@
 
 connect zn_proy_admin/axzu
 
-create or replace procedure p_crea_avion is
+create or replace procedure p_crea_avion (
+  p_indice_tmp in number default 0
+) is
 
   v_existe number := 0;
   v_error varchar2(200);
@@ -35,7 +37,18 @@ create or replace procedure p_crea_avion is
 begin
 
   for r in cur_avion loop
-     
+    
+    -- Avanza hasta donde nos quedamos
+    if p_indice_tmp != 0 and (p_indice_tmp != r.avion_id) then
+      continue;
+    end if;
+    
+    -- Avanza 1 más
+    if p_indice_tmp != 0 and (p_indice_tmp = r.avion_id) then
+      continue;
+    end if;
+    
+    
     v_avion_id := r.avion_id;
     v_matricula := r.matricula;
     v_modelo := r.modelo;
@@ -152,9 +165,8 @@ begin
         values(v_avion_id, v_matricula, v_modelo, v_especificaciones, v_es_comercial, v_es_carga, v_capacidad_ordinario, 
           v_capacidad_discapacitado, v_capacidad_vip, v_bodega_profundidad, v_bodega_alto, v_bodega_ancho, v_num_bodegas,
           v_capacidad, v_aeropuerto_id, v_error);
-    p_crea_avion();
+    p_crea_avion(v_avion_id);
     
 end;
 /
 show errors
-
