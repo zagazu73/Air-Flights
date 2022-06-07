@@ -39,7 +39,7 @@ begin
   v_avion_id_2 := avion_seq.nextval;
   insert into avion_tmp(avion_id, matricula, modelo, especificaciones, es_comercial, es_carga)
         values(v_avion_id_2, '987654321', '987654321', empty_blob(), 0, 0);
-  
+        
   dbms_output.put_line('================================');
   dbms_output.put_line('Ejecutando procedimiento...');
   dbms_output.put_line('================================');
@@ -88,6 +88,8 @@ begin
     raise_application_error(-20001,'Error en escenario 2: Se encontró un registro en avión');
   end if;
   
+  dbms_output.put_line('Eliminando registros de prueba de las tablas');
+  
   delete from avion_comercial where avion_id = v_avion_id_1;
   delete from avion_comercial where avion_id = v_avion_id_2;
   
@@ -97,11 +99,7 @@ begin
   delete from avion where avion_id = v_avion_id_1;
   delete from avion where avion_id = v_avion_id_2;
   
-  delete from avion_tmp where avion_id = v_avion_id_1;
-  delete from avion_tmp where avion_id = v_avion_id_2;
-  
-  delete from avion_tmp_falla where avion_id = v_avion_id_1;
-  delete from avion_tmp_falla where avion_id = v_avion_id_2;
+  -- Los registros de avion_tmp y avion_tmp_falla se eliminarán al cerrar sesión.
 
   exception
     -- Cuando el select no encuentra registros, lanza un error en el escenario 2
@@ -110,7 +108,5 @@ begin
 end;
 /
 show errors
-
-Prompt Eliminando registros de prueba de las tablas...
 
 set serveroutput off
