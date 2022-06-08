@@ -1,6 +1,6 @@
 --@Autor: Zuriel Zárate García y Luis Axel Núñez Quintana
 --@Fecha creación: 27/05/2022
---@Descripción: Bloque anonimo que crea aviones
+--@Descripción: Prueba de procedimiento p_crea_avion
 
 connect zn_proy_admin/axzu
 

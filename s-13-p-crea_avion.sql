@@ -1,13 +1,13 @@
 --@Autor: Zuriel Zárate García y Luis Axel Núñez Quintana
 --@Fecha creación:	03/06/2022
---@Descripción:	Prueba de procedimiento p_crea_avion
+--@Descripción: Procedimiento p_crea_avion
 
 connect zn_proy_admin/axzu
 
 create or replace procedure p_crea_avion (
   p_indice_tmp in number default 0
 ) is
-
+  
   v_existe number := 0;
   v_error varchar2(200);
   

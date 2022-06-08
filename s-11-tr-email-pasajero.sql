@@ -1,3 +1,5 @@
+
+ 
 --@Autor: Zuriel Zárate García y Luis Axel Núñez Quintana
 --@Fecha creación:	04/06/2022
 --@Descripción:	Trigger para evitar la creación de más de 3 emails y validación de correcta secuencia de emails
