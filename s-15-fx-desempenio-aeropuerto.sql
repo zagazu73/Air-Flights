@@ -10,7 +10,7 @@ create or replace function desempenio_aeropuerto(
 
 --variables a utilizar
   v_es_activo number(1,0);
-  v_desempenio_promedio number(5,2);
+  v_desempenio_promedio number(5,0);
   
   begin
     --Se verifica que el aeropuerto este activo
@@ -21,8 +21,8 @@ create or replace function desempenio_aeropuerto(
       select avg(desempenio) into v_desempenio_promedio
       from aeropuerto a, vuelo v, empleado_vuelo ev
       where ev.vuelo_id = v.vuelo_id and
-            (a.aeropuerto_id = aeropuerto_salida or a.aeropuerto_id = aeropuerto_llegada) and
-            a.aeropuerto_id = aeropuerto;
+            (v.aeropuerto_salida = aeropuerto or v.aeropuerto_salida = aeropuerto);
+            dbms_output.put_line('=====HOLI?============DESMP PROM=================='||v_desempenio_promedio);
       return v_desempenio_promedio;
     else 
       raise_application_error(-20018,'El aeropuerto no esta activo');

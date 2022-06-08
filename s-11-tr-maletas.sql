@@ -10,31 +10,24 @@ compound trigger
 
 v_cuenta number;
 v_pase_abordar_id number := :new.pase_abordar_id;
-
-before statement is
-
-begin
-
-  select count(*)
-  into v_cuenta
-  from maleta
-  where pase_abordar_id = v_pase_abordar_id;
-  case 
-    when inserting then
-    if v_cuenta > 9 then
-      raise_application_error(-20008,'Error: Un pasajero no puede registrar más de 10 maletas');
-    end if;
-  end case;
-end before statement;
-
+MUCHAS_MALETAS exception;
+pragma exception_init(MUCHAS_MALETAS,-20008);
 
 before each row is
-
 begin
   case 
     when inserting then
+      select count(*)
+      into v_cuenta
+      from maleta
+      where pase_abordar_id = v_pase_abordar_id;
+      
+      if v_cuenta > 4 then
+        raise MUCHAS_MALETAS;
+      end if;
+      
       if(:new.num_maleta != v_cuenta + 1) then
-        raise_application_error(-20009,'Error: Número de maleta incorrecto, esperado: ' || v_cuenta + 1);
+        raise_application_error(-20009,'Error: Número de link incorrecto, esperado: ' || v_cuenta + 1);
       end if;
       
     when updating then

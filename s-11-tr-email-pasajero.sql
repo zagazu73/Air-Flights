@@ -1,5 +1,3 @@
-
- 
 --@Autor: Zuriel Zárate García y Luis Axel Núñez Quintana
 --@Fecha creación:	04/06/2022
 --@Descripción:	Trigger para evitar la creación de más de 3 emails y validación de correcta secuencia de emails
@@ -12,29 +10,22 @@ compound trigger
 
 v_cuenta number;
 v_pasajero_id number := :new.pasajero_id;
-
-before statement is
-
-begin
-
-  select count(*)
-  into v_cuenta
-  from email_pasajero
-  where v_pasajero_id = pasajero_id;
-  case 
-    when inserting then
-    if v_cuenta > 2 then
-      raise_application_error(-20001,'Error: Un usuario no puede registrar más de 3 emails');
-    end if;
-  end case;
-end before statement;
-
+MUCHOS_EMAIL exception;
+pragma exception_init(MUCHOS_EMAIL,-20001);
 
 before each row is
-
 begin
   case 
     when inserting then
+      select count(*)
+      into v_cuenta
+      from email_pasajero
+      where v_pasajero_id = pasajero_id;
+      
+      if v_cuenta > 2 then
+        raise MUCHOS_EMAIL;
+      end if;
+      
       if(:new.num_email != v_cuenta + 1) then
         raise_application_error(-20003,'Error: Número de email incorrecto, esperado: ' || v_cuenta + 1);
       end if;
@@ -42,10 +33,6 @@ begin
     when updating then
       if (:new.pasajero_id != :old.pasajero_id) or (:new.num_email != :old.num_email) then
         raise_application_error(-20004,'Error: No se pueden actualizar los parámetros de la llave primaria.');
-      end if;
-      
-      if (:new.email not like '%@%.com') then
-        raise_application_error(-20005,'Error: El email ingresado es inválido.');
       end if;
   end case;
 end before each row;

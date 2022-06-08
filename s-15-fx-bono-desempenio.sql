@@ -12,8 +12,8 @@ create or replace function bono_vuelo(
 --variables a utilizar
   v_sueldo puesto.sueldo%type;
   v_desempenio empleado_vuelo.desempenio%type;
-  v_rendimiento number(4,2);
-  v_bono puesto.sueldo%type;
+  v_rendimiento number(6,3);
+  v_bono number(4,0);
   v_cont number(1,0);
   v_empleado_existe number(1,0);
   v_vuelo_existe number(1,0);

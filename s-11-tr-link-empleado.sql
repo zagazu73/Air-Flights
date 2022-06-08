@@ -10,33 +10,29 @@ compound trigger
 
 v_cuenta number;
 v_empleado_id number := :new.empleado_id;
-
-before statement is
-begin
-  select count(*)
-  into v_cuenta
-  from link_empleado
-  where empleado_id = v_empleado_id;
-  case 
-    when inserting then
-    if v_cuenta > 4 then
-      raise_application_error(-20006,'Error: Un empleado no puede registrar más de 5 links');
-    end if;
-  end case;
-end before statement;
+MUCHOS_LINK exception;
+pragma exception_init(MUCHOS_LINK,-20005);
 
 before each row is
-
 begin
   case 
     when inserting then
+      select count(*)
+      into v_cuenta
+      from link_empleado
+      where empleado_id = v_empleado_id;
+      
+      if v_cuenta > 4 then
+        raise MUCHOS_LINK;
+      end if;
+      
       if(:new.num_link != v_cuenta + 1) then
-        raise_application_error(-20007,'Error: Número de links incorrecto, esperado: ' || v_cuenta + 1);
+        raise_application_error(-20006,'Error: Número de link incorrecto, esperado: ' || v_cuenta + 1);
       end if;
       
     when updating then
       if (:new.empleado_id != :old.empleado_id) or (:new.num_link != :old.num_link) then
-        raise_application_error(-20008,'Error: No se pueden actualizar los parámetros de la llave primaria.');
+        raise_application_error(-20007,'Error: No se pueden actualizar los parámetros de la llave primaria.');
       end if;
   end case;
 end before each row;

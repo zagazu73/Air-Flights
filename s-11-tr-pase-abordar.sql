@@ -5,7 +5,7 @@
 
 connect zn_proy_admin/axzu
 create or replace trigger trg_pase_abordar
-after insert or update of pasajero_vuelo_id,num_asiento,tipo_asiento on pasajero_vuelo
+after insert or update of pasajero_vuelo_id,num_asiento,tipo_asiento,atenciones,tomado,pasajero_id,vuelo_id on pasajero_vuelo
 for each row
 
 declare
@@ -22,23 +22,18 @@ declare
 begin
   case
     when inserting then
-      select pasajero_vuelo_id into v_pasajero_vuelo_id
-      from pasajero_vuelo 
-      where pasajero_vuelo_id = :new.pasajero_vuelo_id;
-      
+      v_pasajero_vuelo_id := :new.pasajero_vuelo_id;
       v_pase_abordar_id := pase_abordar_seq.nextval;
       v_folio := pase_abordar_folio_seq.nextval;
       v_fecha_impresion := sysdate;
       
-      select v.fecha_llegada into v_hora_llegada
-      from vuelo v, pasajero_vuelo pv
-      where v.vuelo_id = pv.vuelo_id and
-            pv.pasajero_vuelo_id = :new.pasajero_vuelo_id;
+      select fecha_llegada into v_hora_llegada
+      from vuelo
+      where vuelo_id = :new.vuelo_id;
             
-      select v.fecha_salida into v_hora_salida
-      from vuelo v, pasajero_vuelo pv
-      where v.vuelo_id = pv.vuelo_id and
-            pv.pasajero_vuelo_id = :new.pasajero_vuelo_id;
+      select fecha_salida into v_hora_salida
+      from vuelo
+      where vuelo_id = :new.vuelo_id;
             
       v_num_asiento := :new.num_asiento;
       v_tipo_asiento := :new.tipo_asiento;
@@ -48,15 +43,6 @@ begin
         hora_salida,num_asiento,tipo_asiento,sala_abordar,pasajero_vuelo_id)
         values(v_pase_abordar_id,v_folio,v_fecha_impresion,v_hora_llegada,
         v_hora_salida,v_num_asiento,v_tipo_asiento,v_sala_abordar,v_pasajero_vuelo_id);
-    
-    when updating('num_asiento') then
-      raise_application_error(-20021,'No se puede cambiar de asiento');
-    when updating('tipo_asiento') then
-      raise_application_error(-20022,'No se puede cambiar de asiento');
-    when updating('pasajero_vuelo_id') then
-      raise_application_error(-20023,'No se puede alterar el id del pasajero');
-    else
-      raise_application_error(-20024,'Algo salio mal'); 
   end case;
 end;
 /

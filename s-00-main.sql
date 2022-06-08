@@ -38,10 +38,15 @@ prompt Realizando consultas...
 
 prompt Creando triggers...
 @s-11-tr-email-pasajero.sql
-@s-11-tr-maletas.sql
-@s-11-tr-link-empleado.sql
-@s-11-tr-historico.sql
+@s-12-tr-email-pasajero-prueba.sql
 @s-11-tr-pase-abordar.sql
+@s-12-tr-pase-abordar-prueba.sql
+@s-11-tr-maletas.sql
+@s-12-tr-maleta-prueba.sql
+@s-11-tr-link-empleado.sql
+@s-12-tr-link-empleado-prueba.sql
+@s-11-tr-historico.sql
+@s-12-tr-historico-prueba.sql
 
 prompt procedimiento exporta_empleados...
 @s-13-p-exporta_empleados.sql
@@ -54,9 +59,11 @@ prompt Prueba de procedimiento exporta_empleados...
 
 prompt Creando funciones...
 @s-15-fx-bono-desempenio.sql
+@s-16-fx-bono-desempenio-prueba.sql
 @s-15-fx-desempenio-aeropuerto.sql
+@s-16-fx-desempenio-aeropuerto-prueba.sql
 @s-15-fx-tiempo-espera.sql
-
+@s-16-fx-tiempo-espera-prueba.sql
 
 prompt Procedimiento carga_fotos_empleado...
 @s-17-lob-carga_fotos_empleado.sql

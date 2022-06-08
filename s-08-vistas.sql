@@ -33,3 +33,4 @@ connect zn_proy_invitado/axzu
 create or replace synonym v_empleado for zn_proy_admin.v_empleado;
 create or replace synonym v_vuelos_aeropuerto for zn_proy_admin.v_vuelos_aeropuerto;
 create or replace synonym v_desempenio_emp for zn_proy_admin.v_desempenio_emp;
+commit;
