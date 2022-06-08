@@ -1,25 +1,25 @@
-insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (1, 16, 'ORD', 'Burn of first degree of palm', 0, 1, 1);
-insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (2, 25, 'DIS', 'Asphyx due to being trapped in a car trunk, slf-hrm, sequela', 1, 2, 2);
-insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (3, 62, 'VIP', 'Osteochondropathy, unspecified of thigh', 0, 3, 3);
-insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (4, 10, 'VIP', 'Retinal hemorrhage, left eye', 0, 4, 4);
-insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (5, 1, 'ORD', 'Other nonthrombocytopenic purpura', 1, 5, 5);
-insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (6, 94, 'VIP', 'Other sprain of other finger, initial encounter', 0, 6, 6);
-insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (7, 77, 'VIP', 'Oth disrd of bone density and structure, right shoulder', 1, 7, 7);
-insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (8, 43, 'VIP', 'Malnutrition in pregnancy, unspecified trimester', 0, 8, 8);
-insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (9, 86, 'ORD', 'Toxic effect of phenol and phenol homologues, acc, init', 0, 9, 9);
-insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (10, 3, 'VIP', 'Disp fx of anterior wall of left acetabulum, init for opn fx', 0, 10, 10);
-insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (11, 68, 'ORD', 'Private commercial establishments as place', 1, 11, 11);
-insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (12, 21, 'VIP', 'Displ commnt fx shaft of ulna, r arm, 7thQ', 1, 12, 12);
-insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (13, 75, 'VIP', 'Burn of second degree of unspecified hand, unspecified site', 1, 13, 13);
-insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (14, 87, 'ORD', 'Burn of second degree of left shoulder, initial encounter', 1, 14, 14);
-insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (15, 88, 'DIS', 'Dislocation of unsp interphalangeal joint of unsp thumb', 1, 15, 15);
-insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (17, 59, 'ORD', 'Superficial thrombophlebitis in pregnancy', 1, 17, 17);
-insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (18, 80, 'ORD', 'Occ of anml-drn veh inj by fall fr veh in nonclsn acc, init', 1, 18, 18);
-insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (19, 13, 'VIP', 'Oth fx shaft of left femur, init for opn fx type I/2', 1, 19, 19);
-insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (20, 6, 'ORD', 'Maternal care for fetal problem, unsp, third tri, fetus 1', 0, 20, 20);
-insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (21, 57, 'ORD', 'Disorder of penis, unspecified', 1, 21, 21);
-insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (25, 73, 'VIP', 'Pnctr w fb of abd wall, periumb rgn w penet perit cav, subs', 1, 25, 25);
-insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (27, 9, 'ORD', 'Attention and concentration deficit', 0, 27, 27);
-insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (28, 2, 'ORD', 'Unsp fx upper end unsp radius, subs for clos fx w delay heal', 1, 28, 28);
-insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (29, 48, 'ORD', 'Liver cell carcinoma', 1, 29, 29);
-insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (30, 51, 'ORD', 'Pressure ulcer of unspecified site, stage 1', 0, 30, 30);
+--@Autor: Zuriel Zárate García y Luis Axel Núñez Quintana
+--@Fecha creación:	03/06/2022
+--@Descripción:	Archivo carga inicial de pasajero_vuelo  
+
+
+insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (pasajero_vuelo_seq.nextval, 35, 'ORD', 'Person injured in clsn betw car and hv veh, nontraf', 1, 1, 7);
+insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (pasajero_vuelo_seq.nextval, 32, 'ORD', 'Oth injury of muscle and tendon of head, subs encnt', 1, 2, 6);
+insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (pasajero_vuelo_seq.nextval, 1, 'ORD', 'Unsp physl fx upper end r fibula, subs for fx w rou', 1, 3, 9);
+insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (pasajero_vuelo_seq.nextval, 17, 'ORD', 'Sltr-haris Type I physl fx upr end humer, r arm, 7t', 0, 4, 1);
+insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (pasajero_vuelo_seq.nextval, 58, 'DIS', 'Poisoning by vitamins, undetermined, initial encoun', 1, 5, 1);
+insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (pasajero_vuelo_seq.nextval, 69, 'ORD', 'Laceration of liver, unspecified degree, subs encnt', 1, 6, 8);
+insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (pasajero_vuelo_seq.nextval, 93, 'ORD', 'Abrasion of throat', 1, 7, 9);
+insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (pasajero_vuelo_seq.nextval, 29, 'ORD', 'Erosion of other prosth materials to surrnd org/tis', 1, 8, 7);
+insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (pasajero_vuelo_seq.nextval, 47, 'VIP', 'Traumatic amputation of other parts of head', 1, 9, 8);
+insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (pasajero_vuelo_seq.nextval, 42, 'ORD', 'Gonococcal vulvovaginitis, unspecified', 0, 10, 7);
+insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (pasajero_vuelo_seq.nextval, 22, 'ORD', 'Poisoning by pyrazolone derivatives, undetermined, ', 0, 11, 8);
+insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (pasajero_vuelo_seq.nextval, 70, 'ORD', 'Burn of second degree of thumb (nail)', 1, 12, 10);
+insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (pasajero_vuelo_seq.nextval, 6, 'VIP', 'Inj adductor muscle, fascia and tendon of left thig', 1, 13, 7);
+insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (pasajero_vuelo_seq.nextval, 61, 'ORD', 'Unsp fracture of right foot, init encntr for closed', 0, 14, 1);
+insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (pasajero_vuelo_seq.nextval, 26, 'VIP', 'Unspecified open wound of left shoulder', 1, 15, 9);
+insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (pasajero_vuelo_seq.nextval, 25, 'VIP', 'Monocular exotropia with A pattern, right eye', 1, 16, 8);
+insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (pasajero_vuelo_seq.nextval, 84, 'ORD', 'Stenosis of coronary artery stent, sequela', 1, 17, 9);
+insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (pasajero_vuelo_seq.nextval, 3, 'ORD', 'Oth diabetes mellitus with diabetic chronic kidney ', 0, 18, 10);
+insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (pasajero_vuelo_seq.nextval, 86, 'VIP', 'Unsp injury of blood vessels at hip and thi lev, ri', 1, 19, 8);
+insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (pasajero_vuelo_seq.nextval, 71, 'VIP', 'Pedl cyclst injured in trnsp acc w military vehicle', 1, 20, 7);

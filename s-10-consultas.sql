@@ -2,22 +2,22 @@
 --@Fecha creación:	03/06/2022
 --@Descripción:	Archivo de consultas 
 
-set linesize 120
-col AVION_ID        format a20
-col MATRICULA       format a20
-col MODELO          format a20
-col TOTAL_VUELOS    format a20
-col SUELDO          format a20
-col NOMBRE_EMPLEADO format a20
-col AP_PATERNO      format a20
-col AP_MATERNO      format a20
-col NOMBRE          format a20
-col PASAJERO_ID     format a20
-col CURP            format a20
-col FECHA_NAC       format a20
-col EMAIL           format a20
-col DESEMPENIO      format a20
-col DESCRIPCION     format a20
+set linesize 140
+col AVION_ID        format a15
+col MATRICULA       format a15
+col MODELO          format a15
+col TOTAL_VUELOS    format a15
+col SUELDO          format a15
+col NOMBRE_EMPLEADO format a15
+col AP_PATERNO      format a15
+col AP_MATERNO      format a15
+col NOMBRE          format a15
+col PASAJERO_ID     format a15
+col CURP            format a15
+col FECHA_NAC       format a15
+col EMAIL           format a15
+col DESEMPENIO      format a15
+col DESCRIPCION     format a15
 
 -- Consulta 1 (intersect y tabla temporal)
 prompt Aviones pendientes de insertar de tipo es_carga y es_comercial
