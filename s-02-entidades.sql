@@ -17,7 +17,6 @@ alter table puesto add constraint puesto_sueldo_chk check(
       sueldo >= 10000.00 -- El sueldo de un puesto debe ser mayor a 10,000$
     );
 
-
 prompt creando tabla aeropuerto...
 create table aeropuerto(
     aeropuerto_id    number(10,0)    not null,
@@ -191,8 +190,7 @@ create table empleado_vuelo(
     constraint empleado_vuelo_empleado_id_fk foreign key(empleado_id)
     references empleado(empleado_id),
     constraint empleado_vuelo_pk primary key (empleado_vuelo_id),
-    constraint empleado_vuelo_vuelo_id_uk unique(vuelo_id),
-    constraint empleado_vuelo_empleado_id_uk unique(empleado_id),
+    constraint empleado_vuelo_vuelo_id_empleado_id_uk unique(vuelo_id, empleado_id),
     constraint empleado_vuelo_rol_chk check(
       rol in('piloto','copiloto','jefe','sobrecargo','técnico')
     ) -- Los roles posibles para los vuelos
@@ -260,7 +258,7 @@ create table pase_abordar(
     references pasajero_vuelo(pasajero_vuelo_id),
     constraint pase_abordar_pk primary key(pase_abordar_id),
     constraint pase_abordar_folio_uk unique(folio),
-    constraint pasajero_vuelo_num_asiento_uk unique(num_asiento),
+    constraint pase_abordar_num_asiento_uk unique(num_asiento),
     constraint pase_abordar_tipo_asiento_chk check(
       tipo_asiento in('ORD','DIS','VIP')
     )

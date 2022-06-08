@@ -2,7 +2,6 @@
 --@Fecha creación:	03/06/2022
 --@Descripción:	Archivo carga inicial de avión
 
-
 insert into avion_tmp (avion_id, matricula, modelo, especificaciones,  es_comercial, es_carga, capacidad_ordinario, capacidad_vip, capacidad_discapacitado, bodega_profundidad, bodega_alto, bodega_ancho, num_bodegas, capacidad, aeropuerto_id) values (avion_seq.nextval, '7e9d12a1-0', 'cab346da-0b56-4a29-a', empty_blob(), 0, 1, null, null, null, 19.59, 10.35, 19.31, 7.81, 11.911, 14);
 insert into avion_tmp (avion_id, matricula, modelo, especificaciones,  es_comercial, es_carga, capacidad_ordinario, capacidad_vip, capacidad_discapacitado, bodega_profundidad, bodega_alto, bodega_ancho, num_bodegas, capacidad, aeropuerto_id) values (avion_seq.nextval, 'dbd32cac-3', '81cd613e-2a69-41f6-9', empty_blob(), 0, 1, null, null, null, 12.0, 17.07, 17.6, 1.47, 8.383, 14);
 insert into avion_tmp (avion_id, matricula, modelo, especificaciones,  es_comercial, es_carga, capacidad_ordinario, capacidad_vip, capacidad_discapacitado, bodega_profundidad, bodega_alto, bodega_ancho, num_bodegas, capacidad, aeropuerto_id) values (avion_seq.nextval, 'bf8deca0-1', 'dbaf7cc1-686e-4758-b', empty_blob(), 0, 1, null, null, null, 19.48, 19.71, 11.35, 2.06, 18.882, 8);

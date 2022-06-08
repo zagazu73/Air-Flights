@@ -2,7 +2,6 @@
 --@Fecha creación:	03/06/2022
 --@Descripción:	Archivo carga inicial de pasajero_vuelo  
 
-
 insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (pasajero_vuelo_seq.nextval, 35, 'ORD', 'Person injured in clsn betw car and hv veh, nontraf', 1, 1, 7);
 insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (pasajero_vuelo_seq.nextval, 32, 'ORD', 'Oth injury of muscle and tendon of head, subs encnt', 1, 2, 6);
 insert into pasajero_vuelo (pasajero_vuelo_id, num_asiento, tipo_asiento, atenciones, tomado, pasajero_id, vuelo_id) values (pasajero_vuelo_seq.nextval, 1, 'ORD', 'Unsp physl fx upper end r fibula, subs for fx w rou', 1, 3, 9);
