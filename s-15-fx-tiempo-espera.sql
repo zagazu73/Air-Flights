@@ -12,7 +12,7 @@ create or replace function tiempo_espera(
   v_pase_existe number(1,0);
   v_hora_salida date;
   v_hora_actual date;
-  v_tiempo_faltante number;
+  v_tiempo_faltante varchar(50);
   v_ya_salio varchar2(30) := 'El avion ya ha partido';
   
   begin
@@ -29,16 +29,20 @@ create or replace function tiempo_espera(
     select hora_salida into v_hora_salida
     from pase_abordar
     where pase_abordar_id = pase_abordar;
-    v_hora_actual := to_date(sysdate,'DD/MM/YYYY HH24:MI:SS');
+    v_hora_actual := sysdate;
     
-    if to_date(v_hora_actual,'YYYY-MM-DD HH24:MI') < to_date(v_hora_salida,'YYYY-MM-DD HH24:MI') then
-      dbms_output.put_line('Hora actual: '||to_char(v_hora_actual,'DD/MM/YYYY HH24:MI:SS'));
-      dbms_output.put_line('Hora salida: '||to_char(v_hora_salida,'DD/MM/YYYY HH24:MI:SS'));
-      select trunc((24*(to_date(v_hora_salida,'YYYY-MM-DD hh24:mi:ss')-to_date(v_hora_actual,'YYYY-MM-DD hh24:mi:ss')))/360 , 0)
+    if v_hora_actual < v_hora_salida then
+      dbms_output.put_line('Hora actual: '||to_char(v_hora_actual,'dd/mm/yyyy hh24:mi:ss'));
+      dbms_output.put_line('Hora salida: '||to_char(v_hora_salida,'dd/mm/yyyy hh24:mi:ss'));
+      select (
+        cast(trunc(v_hora_salida-v_hora_actual) as varchar2(10))||' dias '||
+        cast(trunc(mod((v_hora_salida-v_hora_actual)*24,24)) as varchar2(10))||' horas '||
+        cast(trunc(mod((v_hora_salida-v_hora_actual)*(60*24),60)) as varchar2(10))||' minutos y '||
+        cast(trunc(mod((v_hora_salida-v_hora_actual)*(60*60*24),60)) as varchar2(10))||' segundos.'
+      )
       into v_tiempo_faltante
       from dual;
-      
-      return to_char(v_tiempo_faltante);
+      return v_tiempo_faltante;
     else
       return v_ya_salio;
     end if;

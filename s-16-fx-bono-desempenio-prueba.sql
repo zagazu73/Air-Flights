@@ -33,11 +33,15 @@ begin
   
   --El bono es equivalente al 8.5 % de su sueldo mensual.
   --Su sueldo es de 40,000$.
+  -- El 8.5% de 40,000 es 
   v_bono := bono_vuelo(v_vuelo,v_empleado_id);
-  dbms_output.put_line('El bono del empleado '||v_empleado_id||
-    ' en el vuelo '||v_vuelo||' es de: '||v_bono);
-    
-  dbms_output.put_line('La funcion funciona :) ======================> OK! Escenario correcto');
+  if v_bono = 3400 then
+    dbms_output.put_line('El bono del empleado '||v_empleado_id||
+      ' en el vuelo '||v_vuelo||' es de: '||v_bono);
+    dbms_output.put_line('La funcion funciona :) ======================> OK! Escenario correcto');
+  else
+    dbms_output.put_line('======================> ERROR Escenario incorrecto');
+  end if;
 
 end;
 /
