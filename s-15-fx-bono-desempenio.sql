@@ -5,8 +5,8 @@
 connect zn_proy_admin/axzu
 
 create or replace function bono_vuelo(
-  vuelo number,
-  empleado number
+  p_vuelo number,
+  p_empleado number
 ) return number is
 
 --variables a utilizar
@@ -20,16 +20,22 @@ create or replace function bono_vuelo(
   
   begin
     --Se verifica que el empleado seleccionado existe
-    select count(*) into v_empleado_existe
+    select count(*) 
+    into v_empleado_existe
     from empleado
-    where empleado_id = empleado;
+    where empleado_id = p_empleado;
+    
     if v_empleado_existe = 0 then
       raise_application_error(-20015,'El empleado no existe');
       return 0;
     end if;
-    select count(*) into v_vuelo_existe
+    
+    -- Se verifica que el vuelo seleccionado existe
+    select count(*) 
+    into v_vuelo_existe
     from vuelo
-    where vuelo_id = vuelo;
+    where vuelo_id = p_vuelo;
+    
     if v_vuelo_existe = 0 then
       raise_application_error(-20016,'El vuelo no existe');
       return 0;
@@ -37,35 +43,28 @@ create or replace function bono_vuelo(
   
     --Se verifica que el empleado empleado_id participo en el vuelo vuelo_id
     select count(*) into v_cont
-    from puesto p, empleado e, empleado_vuelo ev, vuelo v
-    where p.puesto_id = e.puesto_id and
-          e.empleado_id = ev.empleado_id and
+    from  empleado e, empleado_vuelo ev, vuelo v
+    where e.empleado_id = ev.empleado_id and
           ev.vuelo_id = v.vuelo_id and
-          ev.vuelo_id = vuelo and
-          ev.empleado_id = empleado;
+          ev.vuelo_id = p_vuelo and
+          ev.empleado_id = p_empleado;
     
     if v_cont = 1 then
-      select p.sueldo into v_sueldo
+      select p.sueldo, ev.desempenio 
+      into v_sueldo, v_desempenio
       from puesto p, empleado e, empleado_vuelo ev, vuelo v
       where p.puesto_id = e.puesto_id and
             e.empleado_id = ev.empleado_id and
             ev.vuelo_id = v.vuelo_id and
-            ev.vuelo_id = vuelo and
-            ev.empleado_id = empleado;
-            
-      select ev.desempenio into v_desempenio
-      from empleado_vuelo ev, vuelo v, empleado e
-      where ev.vuelo_id = v.vuelo_id and
-            ev.empleado_id = e.empleado_id and
-            ev.vuelo_id = vuelo and
-            ev.empleado_id = empleado;
+            ev.vuelo_id = p_vuelo and
+            ev.empleado_id = p_empleado;
       
       v_rendimiento := v_desempenio/1000; -- Rendimiento
       v_bono := v_sueldo*v_rendimiento; -- Bono total sobre el sueldo
       return v_bono;
       
     else
-      raise_application_error(-20017,'El empleado '||empleado||' no participo en el vuelo '||vuelo||'');
+      raise_application_error(-20017,'El empleado '|| p_empleado||' no participo en el vuelo '|| p_vuelo||'');
       return 0;
     end if;
   end;

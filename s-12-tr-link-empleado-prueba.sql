@@ -6,6 +6,7 @@ connect zn_proy_admin/axzu
 set serveroutput on
 
 declare
+  v_empleado_id number;
   MUCHOS_LINK exception;
   pragma exception_init(MUCHOS_LINK,-20005);
   
@@ -15,13 +16,17 @@ begin
     dbms_output.put_line('================================================================');
     dbms_output.put_line('Escenario 1- Se intenta registrar mas de 5 links de un empleado');
     dbms_output.put_line('================================================================');
-    --El 1 ya esta :)
-    insert into link_empleado(num_link,empleado_id,link) values(2,30,'https://link2.com');
-    insert into link_empleado(num_link,empleado_id,link) values(3,30,'https://link3.com');
-    insert into link_empleado(num_link,empleado_id,link) values(4,30,'https://link4.com');
-    insert into link_empleado(num_link,empleado_id,link) values(5,30,'https://link5.com');
-    insert into link_empleado(num_link,empleado_id,link) values(6,30,'https://link6.com');
-
+    
+    v_empleado_id := empleado_seq.nextval;
+    insert into empleado(empleado_id, nombre, ap_paterno, ap_materno, curp, foto, jefe_id, puesto_id)
+      values(v_empleado_id, 'A', 'B', 'C', '123456789012345678', empty_blob(), null, 1);
+    
+    insert into link_empleado(num_link,empleado_id,link) values(1,v_empleado_id,'https://link1.com');
+    insert into link_empleado(num_link,empleado_id,link) values(2,v_empleado_id,'https://link2.com');
+    insert into link_empleado(num_link,empleado_id,link) values(3,v_empleado_id,'https://link3.com');
+    insert into link_empleado(num_link,empleado_id,link) values(4,v_empleado_id,'https://link4.com');
+    insert into link_empleado(num_link,empleado_id,link) values(5,v_empleado_id,'https://link5.com');
+    insert into link_empleado(num_link,empleado_id,link) values(6,v_empleado_id,'https://link6.com');
 
   exception
     when MUCHOS_LINK then

@@ -10,7 +10,7 @@ grant read, write on directory DOCUMENTOS_DIR to zn_proy_admin;
 !mkdir -p /tmp/documentos
 
 prompt cambiando permisos
-!chmod 777 /tmp/bases
+!chmod 777 /tmp/documentos
 
 connect  zn_proy_admin/axzu
 

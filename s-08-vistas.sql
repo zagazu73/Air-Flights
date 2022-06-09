@@ -1,6 +1,7 @@
 --@Autor(es): Zuriel Zárate García y Luis Axel Núñez Quintana
 --@Fecha creación: 03/06/2022  
 --@Descripción: Creacion de vistas
+
 connect zn_proy_admin/axzu
 
 create or replace view v_empleado( --Delicados: Sueldo
@@ -33,4 +34,5 @@ connect zn_proy_invitado/axzu
 create or replace synonym v_empleado for zn_proy_admin.v_empleado;
 create or replace synonym v_vuelos_aeropuerto for zn_proy_admin.v_vuelos_aeropuerto;
 create or replace synonym v_desempenio_emp for zn_proy_admin.v_desempenio_emp;
+
 commit;

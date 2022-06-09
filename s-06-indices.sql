@@ -8,13 +8,11 @@ connect zn_proy_admin/axzu
 
 -- Mejorar desempeño en consultas
 -- Tabla empleado
---create index emp_rfc_ix on empleado(rfc);
---create index emp_curp_ix on empleado(curp);
 create index emp_empleados_ix on empleado(nombre, ap_paterno, ap_materno);
+--create index emp_curp_ix on empleado(curp);
 
 -- Tabla avion
 --create index avi_matricula_ix on avion(matricula);
-
 
 -- Tabla aeropuerto
 --create index aer_clave_ix on aeropuerto(clave);
@@ -53,10 +51,12 @@ create unique index pasabo_pasajero_vuelo_id_iuk on pase_abordar(pasajero_vuelo_
 --create unique index emapas_email_iuk on email_pasajero(email);
 --create unique index emapas_emails_iuk on email_pasajero(num_email, pasajero_id);
 
+
 -- Índices basados en el uso de funciones
 -- Nombres y apellidos de pasajero y empĺeado en minúsculas
 create index pas_pasajeros_min_ix on pasajero(lower(nombre), lower(ap_paterno), lower(ap_materno));
 create index emp_empleados_min_ix on empleado(lower(nombre), lower(ap_paterno), lower(ap_materno));
+
 
 
 

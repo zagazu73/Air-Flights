@@ -27,7 +27,7 @@ prompt Creando sinonimos...
 prompt Generando vistas...
 @s-08-vistas.sql
 
-prompt procedimiento crea avion...
+prompt Creando procedimiento crea avion...
 @s-13-p-crea_avion.sql
 
 prompt Carga inicial...
@@ -38,17 +38,27 @@ prompt Realizando consultas...
 
 prompt Creando triggers...
 @s-11-tr-email-pasajero.sql
-@s-12-tr-email-pasajero-prueba.sql
 @s-11-tr-pase-abordar.sql
-@s-12-tr-pase-abordar-prueba.sql
 @s-11-tr-maletas.sql
-@s-12-tr-maleta-prueba.sql
 @s-11-tr-link-empleado.sql
-@s-12-tr-link-empleado-prueba.sql
 @s-11-tr-historico.sql
+
+prompt Prueba de trigger email-pasajero
+@s-12-tr-email-pasajero-prueba.sql
+
+prompt Prueba de trigger link-empleado
+@s-12-tr-link-empleado-prueba.sql
+
+prompt Prueba de trigger pase-abordar
+@s-12-tr-pase-abordar-prueba.sql
+
+prompt Prueba de trigger historico
 @s-12-tr-historico-prueba.sql
 
-prompt procedimiento exporta_empleados...
+Prompt Prueba de trigger maleta
+@s-12-tr-maleta-prueba.sql
+
+prompt Creando procedimiento exporta_empleados...
 @s-13-p-exporta_empleados.sql
 
 prompt Prueba de procedimiento crea avion...
@@ -59,14 +69,23 @@ prompt Prueba de procedimiento exporta_empleados...
 
 prompt Creando funciones...
 @s-15-fx-bono-desempenio.sql
-@s-16-fx-bono-desempenio-prueba.sql
 @s-15-fx-desempenio-aeropuerto.sql
-@s-16-fx-desempenio-aeropuerto-prueba.sql
 @s-15-fx-tiempo-espera.sql
+
+prompt Prueba de función bono-desempenio...
+@s-16-fx-bono-desempenio-prueba.sql
+
+prompt Prueba de función desempenio-aeropuerto...
+@s-16-fx-desempenio-aeropuerto-prueba.sql
+
+prompt Prueba de función tiempo-espera...
 @s-16-fx-tiempo-espera-prueba.sql
 
 prompt Procedimiento carga_fotos_empleado...
 @s-17-lob-carga_fotos_empleado.sql
 
-prompt prueba de procedimiento carga_fotos_empleado...
+prompt Prueba de procedimiento carga_fotos_empleado...
 @s-18-lob-carga_fotos_empleado-prueba.sql
+
+prompt Resultados...
+@resultados-proyecto-final.sql

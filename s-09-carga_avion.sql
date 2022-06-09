@@ -27,9 +27,6 @@ begin
 
 p_crea_avion();
 
-insert into avion_tmp (avion_id, matricula, modelo, especificaciones,  es_comercial, es_carga, capacidad_ordinario, capacidad_vip, capacidad_discapacitado, bodega_profundidad, bodega_alto, bodega_ancho, num_bodegas, capacidad, aeropuerto_id) values (avion_seq.nextval, 'dd5-08cd85', '5d73-487f-8-4d82920e', empty_blob(), 0, 1, null, null, null, 13.1, 12.16, 11.6, 4.35, 6.338, 8);
-insert into avion_tmp (avion_id, matricula, modelo, especificaciones,  es_comercial, es_carga, capacidad_ordinario, capacidad_vip, capacidad_discapacitado, bodega_profundidad, bodega_alto, bodega_ancho, num_bodegas, capacidad, aeropuerto_id) values (avion_seq.nextval, 'd5-08cd8dd', '54ws-487f-9-4d82920e', empty_blob(), 1, 0, 100, 120, 59, null, null, null, null, null, null);
-insert into avion_tmp (avion_id, matricula, modelo, especificaciones,  es_comercial, es_carga, capacidad_ordinario, capacidad_vip, capacidad_discapacitado, bodega_profundidad, bodega_alto, bodega_ancho, num_bodegas, capacidad, aeropuerto_id) values (avion_seq.nextval, '006-913a49', 'a9-9c80-42e4-f3dc518', empty_blob(), 1, 1, 102, 111, 61, 19.41, 17.45, 14.44, 7.62, 18.166, 6);
 end;
 /
 show errors;

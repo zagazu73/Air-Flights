@@ -53,12 +53,12 @@ begin
   
   select count(*)
   into v_carga
-  from avion
+  from avion_carga
   where avion_id = v_avion_id_1;
   
   select count(*)
   into v_comercial
-  from avion
+  from avion_comercial
   where avion_id = v_avion_id_1;
   
   if v_avion_1 = 1 and v_carga = 1 and v_comercial = 1 then

@@ -47,7 +47,10 @@ create table avion(
     es_comercial        number(1,0)     not null,
     es_carga            number(1,0)     not null,
     constraint avion_pk primary key(avion_id),
-    constraint avion_matricula_uk unique(matricula)
+    constraint avion_matricula_uk unique(matricula),
+    constraint avion_banderas_chk check(
+      es_comercial != 0 or es_carga != 0
+    )
 );
 
 prompt creando tabla avion_carga...
@@ -84,12 +87,12 @@ create table avion_comercial(
     constraint avion_comercial_pk primary key(avion_id),
     constraint avion_comercial_capacidad_chk check(
       capacidad_ordinario>=10 and capacidad_vip>=10 and capacidad_discapacitado>=10
-    ) -- Debe llevar al menos 10 pasajeros de cada clase.
+    ) -- Debe permitir llevar a 10 pasajeros de cada clase.
 );
 
 prompt creando tabla pasajero...
 create table pasajero(
-    pasajero_id         number(10,0)    not null,
+    pasajero_id         number(10,0)     not null,
     nombre              varchar2(50)     not null,
     ap_paterno          varchar2(50)     not null,
     ap_materno          varchar2(50)             ,
@@ -117,17 +120,17 @@ create table email_pasajero(
 
 prompt creando tabla empleado...
 create table empleado(
-    empleado_id    number(10,0)    not null,
+    empleado_id    number(10,0)     not null,
     nombre         varchar2(50)     not null,
     ap_paterno     varchar2(50)     not null,
     ap_materno     varchar2(50)     not null,
+    curp           varchar2(18)     not null,
     rfc            generated always as(
       substr(curp,0,13)
     ) virtual,
-    curp           varchar2(18)     not null,
     foto           blob             not null,
     jefe_id        number(10,0)            ,
-    puesto_id      number(2,0)     not null,
+    puesto_id      number(2,0)      not null,
     constraint empleado_jefe_id_fk foreign key(jefe_id)
     references empleado(empleado_id),
     constraint empleado_puesto_id_fk foreign key(puesto_id)
@@ -138,7 +141,7 @@ create table empleado(
 
 prompt creando tabla status_vuelo...
 create table status_vuelo(
-    status_vuelo_id    number(2,0)    not null,
+    status_vuelo_id    number(2,0)     not null,
     status_vuelo       varchar2(40)    not null,
     constraint status_vuelo_pk primary key(status_vuelo_id),
     constraint status_vuelo_status_vuelo_uk unique(status_vuelo)
@@ -146,16 +149,16 @@ create table status_vuelo(
 
 prompt creando tabla vuelo...
 create table vuelo(
-    vuelo_id              number(10,0)    not null,
-    num_vuelo             number(5,0)     not null,
+    vuelo_id              number(10,0)     not null,
+    num_vuelo             number(5,0)      not null,
     fecha_llegada         date             not null,
     fecha_salida          date             not null,
     sala_abordar          varchar2(5),
     fecha_status          date             not null,
-    avion_id              number(10,0)    not null,
-    aeropuerto_salida     number(10,0)    not null,
-    aeropuerto_llegada    number(10,0)    not null,
-    status_vuelo_id       number(2,0)     not null,
+    avion_id              number(10,0)     not null,
+    aeropuerto_salida     number(10,0)     not null,
+    aeropuerto_llegada    number(10,0)     not null,
+    status_vuelo_id       number(2,0)      not null,
     tipo                  char(1)          not null,
     constraint vuelo_avion_id_fk foreign key(avion_id)
     references avion(avion_id),
@@ -167,24 +170,24 @@ create table vuelo(
     references status_vuelo(status_vuelo_id),
     constraint vuelo_pk primary key(vuelo_id),
     constraint vuelo_aeropuertos_chk check(
-      aeropuerto_llegada!=aeropuerto_salida
+      aeropuerto_llegada != aeropuerto_salida
     ),
     constraint vuelo_num_vuelo_uk unique(num_vuelo),
     constraint vuelo_tipo_chk check(
       tipo in('C','P') --C de carga o P de pasajeros
     ),
     constraint vuelo_fechas_chk check(
-      fecha_llegada>fecha_salida
+      fecha_llegada > fecha_salida
     )
 );
 
 prompt creando tabla empleado_vuelo...
 create table empleado_vuelo(
-    empleado_vuelo_id    number(10,0)    not null,
-    vuelo_id             number(10,0)    not null,
-    empleado_id          number(10,0)    not null,
+    empleado_vuelo_id    number(10,0)     not null,
+    vuelo_id             number(10,0)     not null,
+    empleado_id          number(10,0)     not null,
     rol                  varchar2(20)     not null,
-    desempenio           number(3,0)     not null,
+    desempenio           number(3,0)      not null,
     constraint empleado_vuelo_vuelo_id_fk foreign key(vuelo_id)
     references vuelo(vuelo_id),
     constraint empleado_vuelo_empleado_id_fk foreign key(empleado_id)
@@ -198,10 +201,10 @@ create table empleado_vuelo(
 
 prompt creando tabla historico_vuelo...
 create table historico_vuelo(
-    historico_vuelo_id    number(10,0)    not null,
+    historico_vuelo_id    number(10,0)     not null,
     fecha_status          date             not null,
-    status_vuelo_id       number(2,0)     not null,
-    vuelo_id              number(10,0)    not null,
+    status_vuelo_id       number(2,0)      not null,
+    vuelo_id              number(10,0)     not null,
     constraint historico_vuelo_status_vuelo_id_fk foreign key(status_vuelo_id)
     references status_vuelo(status_vuelo_id),
     constraint historico_vuelo_vuelo_id_fk foreign key(vuelo_id)
@@ -211,8 +214,8 @@ create table historico_vuelo(
 
 prompt creando tabla link_empleado...
 create table link_empleado(
-    num_link       number(2,0)     not null,
-    empleado_id    number(10,0)    not null,
+    num_link       number(2,0)      not null,
+    empleado_id    number(10,0)     not null,
     link           varchar2(100)    not null,
     constraint link_empleado_empleado_id_fk foreign key(empleado_id)
     references empleado(empleado_id),
@@ -222,19 +225,19 @@ create table link_empleado(
 
 prompt creando tabla pasajero_vuelo...
 create table pasajero_vuelo(
-    pasajero_vuelo_id    number(10,0)     not null,
-    num_asiento          number(3,0)      not null,
-    tipo_asiento         varchar2(3)      not null,
+    pasajero_vuelo_id    number(10,0)      not null,
+    num_asiento          number(3,0)       not null,
+    tipo_asiento         varchar2(3)       not null,
     atenciones           varchar2(2000)    not null,
-    tomado               number(1,0)     default 1,
-    pasajero_id          number(10,0)     not null,
-    vuelo_id             number(10,0)     not null,
+    tomado               number(1,0)       default 1,
+    pasajero_id          number(10,0)      not null,
+    vuelo_id             number(10,0)      not null,
     constraint pasajero_vuelo_pasajero_id_fk foreign key(pasajero_id)
     references pasajero(pasajero_id),
     constraint pasajero_vuelo_vuelo_id_fk foreign key(vuelo_id)
     references vuelo(vuelo_id),
     constraint pasajero_vuelo_pk primary key(pasajero_vuelo_id),
-    constraint pasajero_vuelo_num_asiento_uk unique(num_asiento),
+    constraint pasajero_vuelo_vuelo_id_num_asiento_uk unique(num_asiento, vuelo_id),
     constraint pasajero_vuelo_tomado_chk check(
       tomado in (0,1)
     ),
@@ -245,20 +248,19 @@ create table pasajero_vuelo(
 
 prompt creando tabla pase_abordar...
 create table pase_abordar(
-    pase_abordar_id      number(10,0)    not null,
+    pase_abordar_id      number(10,0)     not null,
     folio                varchar2(8)      not null,
-    fecha_impresion      date      default sysdate,
+    fecha_impresion      date             default sysdate,
     hora_llegada         date             not null,
     hora_salida          date             not null,
-    num_asiento          number(3,0)     not null,
+    num_asiento          number(3,0)      not null,
     tipo_asiento         varchar2(3)      not null,
     sala_abordar         varchar2(5)              ,
-    pasajero_vuelo_id    number(10,0)    not null,
+    pasajero_vuelo_id    number(10,0)     not null,
     constraint pase_abordar_pasajero_vuelo_id_fk foreign key(pasajero_vuelo_id)
     references pasajero_vuelo(pasajero_vuelo_id),
     constraint pase_abordar_pk primary key(pase_abordar_id),
     constraint pase_abordar_folio_uk unique(folio),
-    constraint pase_abordar_num_asiento_uk unique(num_asiento),
     constraint pase_abordar_tipo_asiento_chk check(
       tipo_asiento in('ORD','DIS','VIP')
     )
@@ -268,7 +270,7 @@ prompt creando tabla maleta...
 create table maleta(
     num_maleta         number(2,0)     not null,
     pase_abordar_id    number(10,0)    not null,
-    peso               number(4,2)     not null, -- CAMBIOOOOOOOOOOOOOOOOOOOOOOOOOO
+    peso               number(4,2)     not null, 
     constraint maleta_pase_abordar_id_fk foreign key(pase_abordar_id)
     references pase_abordar(pase_abordar_id),
     constraint maleta_pk primary key (num_maleta,pase_abordar_id),
@@ -279,7 +281,7 @@ create table maleta(
 
 prompt creando tabla tipo_paquete...
 create table tipo_paquete(
-    tipo_paquete_id    number(2,0)     not null,
+    tipo_paquete_id    number(2,0)      not null,
     clave              varchar2(5)      not null,
     descripcion        varchar2(200)    not null,
     indicaciones       varchar2(500)    not null,
@@ -307,10 +309,10 @@ create table paquete(
 
 prompt creando ubicacion_vuelo...
 create table ubicacion_vuelo(
-    num_ubicacion    number(4,0)     not null,
-    vuelo_id         number(10,0)    not null,
-    latitud          number(3,0)     not null,
-    longitud         number(3,0)     not null,
+    num_ubicacion    number(4,0)      not null,
+    vuelo_id         number(10,0)     not null,
+    latitud          number(3,0)      not null,
+    longitud         number(3,0)      not null,
     fecha            date             not null,
     constraint ubicacion_vuelo_vuelo_id_fk foreign key(vuelo_id)
     references vuelo(vuelo_id),

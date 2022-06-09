@@ -9,7 +9,7 @@ create or replace procedure p_crea_avion (
 ) is
   
   v_existe number := 0;
-  v_error varchar2(200);
+  v_error varchar2(2000);
   
   v_avion_id avion_tmp.avion_id%type;
   v_matricula avion_tmp.matricula%type;
@@ -65,7 +65,7 @@ begin
     v_capacidad := r.capacidad;
     v_aeropuerto_id := r.aeropuerto_id;
   
-     v_error := 'Error(es):';
+    v_error := 'Error(es):';
     
           
     select count(*) 
@@ -165,7 +165,7 @@ begin
         values(v_avion_id, v_matricula, v_modelo, v_especificaciones, v_es_comercial, v_es_carga, v_capacidad_ordinario, 
           v_capacidad_discapacitado, v_capacidad_vip, v_bodega_profundidad, v_bodega_alto, v_bodega_ancho, v_num_bodegas,
           v_capacidad, v_aeropuerto_id, v_error);
-    p_crea_avion(v_avion_id);
+      p_crea_avion(v_avion_id);
     
 end;
 /

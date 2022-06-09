@@ -41,7 +41,6 @@ begin
     dbms_output.put_line('Procesando para empleado_id: ' || r.empleado_id);
     -- Abriendo archivo
     v_bfile := bfilename('FOTOS_DIR', 'empleado-'||r.empleado_id||'.jpg');
-    v_length_archivo := dbms_lob.getlength(v_bfile);
     
     -- Primero verifica si el archivo existe
     if dbms_lob.fileexists(v_bfile) != 1 then
@@ -55,6 +54,8 @@ begin
       dbms_output.put_line('No se encontró el archivo: empleado-'||r.empleado_id||'.jgp');
       continue;
     end if;
+    
+    v_length_archivo := dbms_lob.getlength(v_bfile);
     
     -- Obteniendo referencia de la columna foto en modo exclusivo
     -- Ningun usuario puede leer el contenido de la foto mientras se actualiza

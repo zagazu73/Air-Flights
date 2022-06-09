@@ -27,14 +27,6 @@ begin
   
   dbms_output.put_line('Ingresando registros de prueba');
   
-  dbms_output.put_line('Creamos aeropuertos activo de prueba');
-  v_aeropuerto_id := aeropuerto_seq.nextval;
-  insert into aeropuerto(aeropuerto_id,nombre,clave,latitud,longitud,activo)
-    values(v_aeropuerto_id,'Felipe Angeles','FA4dnmw8928ar',29,67,1);
-  v_aeropuerto_id2 := aeropuerto_seq.nextval;
-  insert into aeropuerto(aeropuerto_id,nombre,clave,latitud,longitud,activo)
-    values(v_aeropuerto_id2,'Mexican Air','MAR4d80a928lk',29,67,1);
-  
   dbms_output.put_line('Creamos aviones de prueba');
   v_avion_id := avion_seq.nextval;
   insert into avion_tmp(avion_id, matricula, modelo, especificaciones,  es_comercial, es_carga, capacidad_ordinario, capacidad_vip, capacidad_discapacitado, bodega_profundidad, bodega_alto, bodega_ancho, num_bodegas, capacidad, aeropuerto_id) 
@@ -43,6 +35,14 @@ begin
   insert into avion_tmp(avion_id, matricula, modelo, especificaciones,  es_comercial, es_carga, capacidad_ordinario, capacidad_vip, capacidad_discapacitado, bodega_profundidad, bodega_alto, bodega_ancho, num_bodegas, capacidad, aeropuerto_id) 
   values (v_avion_id2, '1001b0ka-4', '813f73d1-holi-4efb-a', empty_blob(), 1, 1, 113, 143, 77, 11.82, 17.8, 11.26, 4.92, 13.203, null);
   p_crea_avion();
+  
+  dbms_output.put_line('Creamos aeropuertos activo de prueba');
+  v_aeropuerto_id := aeropuerto_seq.nextval;
+  insert into aeropuerto(aeropuerto_id,nombre,clave,latitud,longitud,activo)
+    values(v_aeropuerto_id,'Felipe Angeles','FA4dnmw8928ar',29,67,1);
+  v_aeropuerto_id2 := aeropuerto_seq.nextval;
+  insert into aeropuerto(aeropuerto_id,nombre,clave,latitud,longitud,activo)
+    values(v_aeropuerto_id2,'Mexican Air','MAR4d80a928lk',29,67,1);
   
   dbms_output.put_line('Creamos empleados');
   v_empleado_id := empleado_seq.nextval;
@@ -88,9 +88,19 @@ begin
     dbms_output.put_line('===================================> ERROR Escenario incorrecto');
   end if;
   
+  dbms_output.put_line('Realizando rollback para limpiar tablas');
+  rollback;
+  
+  delete from avion_comercial where avion_id = v_avion_id;
+  delete from avion_comercial where avion_id = v_avion_id2;
+  
+  delete from avion_carga where avion_id = v_avion_id;
+  delete from avion_carga where avion_id = v_avion_id2;
+  
+  delete from avion where avion_id = v_avion_id;
+  delete from avion where avion_id = v_avion_id2;
+
 end;
 /
 show errors
-Prompt Haciendo rollback para limpiar tablas
-rollback;
 set serveroutput off

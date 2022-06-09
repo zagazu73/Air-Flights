@@ -14,7 +14,7 @@ v_indice := vuelo_seq.nextval;
 insert into vuelo (vuelo_id, num_vuelo, fecha_llegada, fecha_salida, sala_abordar, fecha_status, avion_id, aeropuerto_salida, aeropuerto_llegada, status_vuelo_id, tipo) values (v_indice, v_indice, to_date('2025-03-14 01:17:43', 'yyyy-mm-dd hh24:mi:ss'), to_date('2022-02-19 19:12:57', 'yyyy-mm-dd hh24:mi:ss'), 'LBFTK', to_date('2021-08-12 16:14:27', 'yyyy-mm-dd hh24:mi:ss'), 1, 1, 12, 1, 'C');
 
 v_indice := vuelo_seq.nextval;
-insert into vuelo (vuelo_id, num_vuelo, fecha_llegada, fecha_salida, sala_abordar, fecha_status, avion_id, aeropuerto_salida, aeropuerto_llegada, status_vuelo_id, tipo) values (v_indice, v_indice, to_date('2022-06-20 07:00:00', 'yyyy-mm-dd hh24:mi:ss'), to_date('2022-06-10 00:00:00', 'yyyy-mm-dd hh24:mi:ss'), 'Mkmav', to_date('2021-06-07 14:09:29', 'yyyy-mm-dd hh24:mi:ss'), 2, 1, 12, 1, 'C');
+insert into vuelo (vuelo_id, num_vuelo, fecha_llegada, fecha_salida, sala_abordar, fecha_status, avion_id, aeropuerto_salida, aeropuerto_llegada, status_vuelo_id, tipo) values (v_indice, v_indice, to_date('2025-06-20 07:00:00', 'yyyy-mm-dd hh24:mi:ss'), to_date('2022-06-10 00:00:00', 'yyyy-mm-dd hh24:mi:ss'), 'Mkmav', to_date('2021-06-07 14:09:29', 'yyyy-mm-dd hh24:mi:ss'), 2, 1, 12, 1, 'C');
 
 v_indice := vuelo_seq.nextval;
 insert into vuelo (vuelo_id, num_vuelo, fecha_llegada, fecha_salida, sala_abordar, fecha_status, avion_id, aeropuerto_salida, aeropuerto_llegada, status_vuelo_id, tipo) values (v_indice, v_indice, to_date('2025-09-16 09:05:05', 'yyyy-mm-dd hh24:mi:ss'), to_date('2021-06-18 05:47:48', 'yyyy-mm-dd hh24:mi:ss'), 'BdOAZ', to_date('2022-05-23 14:44:28', 'yyyy-mm-dd hh24:mi:ss'), 3, 1, 20, 1, 'C');

@@ -47,7 +47,6 @@ begin
     when ARCHIVO_NO_ENCONTRADO then
       dbms_output.put_line('No se encontró el archivo! Verifique que el nombre del archivo es: empleado-<empleado_id>.jpg');
       dbms_output.put_line('');
-      dbms_output.put_line('');
       dbms_output.put_line('Error en la prueba...=========> Escenario 1 incorrecto');
     when others then
       raise;

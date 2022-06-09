@@ -33,8 +33,9 @@ begin
   
   --El bono es equivalente al 8.5 % de su sueldo mensual.
   --Su sueldo es de 40,000$.
-  -- El 8.5% de 40,000 es 
+  -- El 8.5% de 40,000 es 3400
   v_bono := bono_vuelo(v_vuelo,v_empleado_id);
+  
   if v_bono = 3400 then
     dbms_output.put_line('El bono del empleado '||v_empleado_id||
       ' en el vuelo '||v_vuelo||' es de: '||v_bono);

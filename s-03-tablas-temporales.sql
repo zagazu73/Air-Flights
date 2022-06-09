@@ -4,7 +4,7 @@
 
 connect zn_proy_admin/axzu
 
-prompt creando tabla avion_tmp...
+prompt Creando tabla avion_tmp...
 create global temporary table avion_tmp(
     avion_id                   number(10,0)    not null,
     matricula                  varchar2(10)    not null,
@@ -34,7 +34,7 @@ create global temporary table avion_tmp(
     )    
 )on commit delete rows;
 
-prompt creando tabla avion_tmp_falla...
+prompt Creando tabla avion_tmp_falla...
 create global temporary table avion_tmp_falla(
     avion_id                   number(10,0)    not null,
     matricula                  varchar2(10)    not null,

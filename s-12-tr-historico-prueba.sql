@@ -7,35 +7,61 @@ set serveroutput on
 
 declare
   
-  v_status_vuelo_id number(2,0);
-  v_status_vuelo varchar(40);
-  v_cont_ant number(1,0);
-  v_cont_nuevo number(1,0);
   v_vuelo_id number(10,0);
+  v_aeropuerto1_id number(10,0);
+  v_aeropuerto2_id number(10,0);
+  v_avion_id number(10,0);
+  
+  v_status_vuelo1_id number(2,0);
+  v_status_vuelo1 varchar2(40);
+  
+  v_status_vuelo2_id number(2,0);
+  v_status_vuelo2 varchar2(40);
+  
+  v_cont number;
   
 begin
-  
-  v_status_vuelo_id := status_vuelo_seq.nextval;
-  v_status_vuelo := 'PROGRAMADO';
-  v_vuelo_id := vuelo_seq.nextval;
+
 
   dbms_output.put_line(chr(3));
   dbms_output.put_line('==================================================');
   dbms_output.put_line('Escenario 1- Se inserta un nuevo registro en vuelo');
   dbms_output.put_line('==================================================');
   
-  dbms_output.put_line('Verificando el numero de registros en el historico antes de una insercion en vuelo...');
-  select count(*) into v_cont_ant from historico_vuelo;
-  dbms_output.put_line('# DE REGISTROS DE HISTORICO_VUELO: '||v_cont_ant);
-  
-  insert into vuelo (vuelo_id, num_vuelo, fecha_llegada, fecha_salida, sala_abordar, fecha_status, avion_id, aeropuerto_salida, aeropuerto_llegada, status_vuelo_id, tipo) 
-    values (v_vuelo_id, vuelo_seq.nextval, to_date('2022-10-23 20:08:17','YYYY/MM/DD HH24:MI:SS'), to_date('2022-10-23 17:37:32','YYYY/MM/DD HH24:MI:SS'), '3T1na', to_date('2022-10-23 17:37:32','YYYY/MM/DD HH24:MI:SS'), 19, 6, 15, 1, 'C');
+  v_status_vuelo1_id := status_vuelo_seq.nextval;
+  v_status_vuelo1 := 'PRUEBA';
 
-  dbms_output.put_line('Verificando el numero de registros en el historico...');
-  select count(*) into v_cont_nuevo from historico_vuelo;
-  dbms_output.put_line('# DE REGISTROS ACTUAL DE HISTORICO_VUELO: '||v_cont_nuevo);
   
-  if v_cont_nuevo > v_cont_ant then
+  v_vuelo_id := vuelo_seq.nextval;
+  v_aeropuerto1_id := aeropuerto_seq.nextval;
+  v_aeropuerto2_id := aeropuerto_seq.nextval;
+  v_avion_id := avion_seq.nextval;
+  
+  insert into avion(avion_id, matricula, modelo, especificaciones, es_comercial, es_carga)
+    values(v_avion_id, 'A', 'B', empty_blob(), 1, 0);
+  
+  insert into aeropuerto(aeropuerto_id, nombre, clave, latitud, longitud, activo)
+    values(v_aeropuerto1_id, 'A Airport', 'B', 50, 50, 1);
+    
+  insert into aeropuerto(aeropuerto_id, nombre, clave, latitud, longitud, activo)
+    values(v_aeropuerto2_id, 'C Airport', 'D', 60, 60, 1);
+    
+  insert into status_vuelo(status_vuelo_id, status_vuelo)
+    values(v_status_vuelo1_id, v_status_vuelo1);
+  
+  insert into vuelo(vuelo_id, num_vuelo, fecha_llegada, fecha_salida, sala_abordar, fecha_status
+    , avion_id, aeropuerto_salida, aeropuerto_llegada, status_vuelo_id, tipo) 
+    values(v_vuelo_id, v_vuelo_id, to_date('2023-06-24 07:38:48', 'yyyy-mm-dd hh24:mi:ss'), to_date('2022-06-24 07:38:48', 'yyyy-mm-dd hh24:mi:ss'), null, sysdate
+    ,  v_avion_id, v_aeropuerto1_id, v_aeropuerto2_id, v_status_vuelo1_id, 'P');
+    
+  dbms_output.put_line('Verificando la inserción de registro en histórico...');
+  
+  select count(*) 
+  into v_cont
+  from historico_vuelo
+  where vuelo_id = v_vuelo_id;
+  
+  if v_cont = 1 then
     dbms_output.put_line('Registro nuevo en el historico detectado ===> OK! Escenario 1 correcto');
   else
     dbms_output.put_line('ERROR! Escenario 1 incorrecto');
@@ -45,20 +71,25 @@ begin
   dbms_output.put_line('=========================================================');
   dbms_output.put_line('Escenario 2- Se actualiza el status del registro anterior');
   dbms_output.put_line('=========================================================');
-
-  dbms_output.put_line('Verificando el numero de registros en el historico antes de modificar el status del vuelo '||v_vuelo_id);
-  select count(*) into v_cont_ant from historico_vuelo;
-  dbms_output.put_line('# DE REGISTROS DE HISTORICO_VUELO: '||v_cont_ant);
-
+  
+  v_status_vuelo2_id := status_vuelo_seq.nextval;
+  v_status_vuelo2 := 'PRUEBA2';
+  
+  insert into status_vuelo(status_vuelo_id, status_vuelo)
+    values(v_status_vuelo2_id, v_status_vuelo2);
+    
   update vuelo
-  set status_vuelo_id = 5
+  set status_vuelo_id = v_status_vuelo2_id
   where vuelo_id = v_vuelo_id;
   
-  dbms_output.put_line('Verificando el numero de registros en el historico...');
-  select count(*) into v_cont_nuevo from historico_vuelo;
-  dbms_output.put_line('# DE REGISTROS ACTUAL DE HISTORICO_VUELO: '||v_cont_nuevo);
+  dbms_output.put_line('Verificando la inserción de registro en histórico...');
   
-  if v_cont_nuevo > v_cont_ant then
+  select count(*) 
+  into v_cont
+  from historico_vuelo
+  where vuelo_id = v_vuelo_id;
+  
+  if v_cont = 2 then
     dbms_output.put_line('Registro nuevo en el historico detectado ===> OK! Escenario 2 correcto');
   else
     dbms_output.put_line('ERROR! Escenario 2 incorrecto');

@@ -4,9 +4,9 @@
 
 connect zn_proy_admin/axzu
 Prompt creando sinónimos publicos de zn_proy_admin...
-create or replace public synonym ubicacion_vuelo for zn_proy_admin.ubicacion_vuelo;
-create or replace public synonym avion for zn_proy_admin.avion;
-create or replace public synonym vuelo for zn_proy_admin.vuelo;
+create or replace public synonym ubi_vuelo for zn_proy_admin.ubicacion_vuelo;
+create or replace public synonym avi for zn_proy_admin.avion;
+create or replace public synonym vue for zn_proy_admin.vuelo;
 
 connect sys/system as sysdba
 Prompt otorgando permisos a zn_proy_invitado para leer tablas de zn_proy_admin

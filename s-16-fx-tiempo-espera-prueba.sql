@@ -39,7 +39,11 @@ begin
   insert into pasajero_vuelo(pasajero_vuelo_id,num_asiento,tipo_asiento,atenciones,tomado,pasajero_id,vuelo_id)
     values(v_pasajero_vuelo_id,30,'VIP','SIN ATENCIONES',1,v_pasajero_id,v_vuelo);
 
-  v_pase_abordar_id := pase_abordar_seq.currval;
+  select pase_abordar_id
+  into v_pase_abordar_id
+  from pase_abordar
+  where pasajero_vuelo_id = v_pasajero_vuelo_id;
+
   v_tiempo_espera := tiempo_espera(v_pase_abordar_id);
 
   if v_tiempo_espera != 'El avion ya ha partido' then
@@ -49,10 +53,7 @@ begin
     dbms_output.put_line('El avion ya ha partido');
     dbms_output.put_line('=======================> Error Escenario 1 incorrecto');
   end if;
-  
-  
-  
-  
+
   dbms_output.put_line(chr(5));
   dbms_output.put_line('==========================================================================');
   dbms_output.put_line('Escenario 2 ======> Tiempo de espera restante de un vuelo ya salio');
@@ -75,7 +76,11 @@ begin
   insert into pasajero_vuelo(pasajero_vuelo_id,num_asiento,tipo_asiento,atenciones,tomado,pasajero_id,vuelo_id)
     values(v_pasajero_vuelo_id,45,'VIP','SIN ATENCIONES',1,v_pasajero_id,v_vuelo);
 
-  v_pase_abordar_id := pase_abordar_seq.currval;
+  select pase_abordar_id
+  into v_pase_abordar_id
+  from pase_abordar
+  where pasajero_vuelo_id = v_pasajero_vuelo_id;
+  
   v_tiempo_espera := tiempo_espera(v_pase_abordar_id);
 
   if v_tiempo_espera != 'El avion ya ha partido' then

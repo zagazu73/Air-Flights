@@ -1,6 +1,6 @@
 --@Autor: Zuriel Zárate García y Luis Axel Nuñez Quintana
 --@Fecha creación:	02/06/2022
---@Descripción:	Crea a los usuarios zn_proy.
+--@Descripción:	Crea a los usuarios zn_proy y roles zn_rol.
 
 connect sys/system as sysdba
 

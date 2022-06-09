@@ -27,7 +27,7 @@ begin
       end if;
       
       if(:new.num_maleta != v_cuenta + 1) then
-        raise_application_error(-20009,'Error: Número de link incorrecto, esperado: ' || v_cuenta + 1);
+        raise_application_error(-20009,'Error: Número de maleta incorrecta, esperado: ' || v_cuenta + 1);
       end if;
       
     when updating then
