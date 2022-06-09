@@ -30,6 +30,6 @@ begin
 end;
 /
 show errors
---Prompt Haciendo rollback para limpiar tablas
---rollback;
+Prompt Haciendo rollback para limpiar tablas
+rollback;
 set serveroutput off
